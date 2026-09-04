@@ -24,17 +24,15 @@
       var have = window.UC_IMAGES;
       if (Object.prototype.toString.call(have) === '[object Array]' &&
           have.indexOf(src.slice(src.indexOf('images/') + 7)) === -1) return;
-      var probe = new Image();
-      probe.onload = function () {
-        var img = document.createElement('img');
-        img.src = src;
-        img.alt = el.dataset.alt || '';
-        img.className = 'art-photo';
-        img.decoding = 'async';
-        el.appendChild(img);
-        el.classList.add('has-photo');
-      };
-      probe.src = src;
+      var lazy = !el.closest('.hero');
+      var img = document.createElement('img');
+      if (lazy) { img.loading = 'lazy'; img.onerror = function () { img.remove(); }; }
+      img.decoding = 'async';
+      img.alt = el.dataset.alt || '';
+      img.className = 'art-photo';
+      img.src = src;
+      el.appendChild(img);
+      el.classList.add('has-photo');
     });
   }
 
