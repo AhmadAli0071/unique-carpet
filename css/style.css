@@ -761,11 +761,13 @@ p{margin:0 0 1.15em}
   padding-right:clamp(3rem,6vw,5.5rem);
 }
 .logo-marquee__group img{
-  height:clamp(44px,6vw,60px);width:auto;object-fit:contain;flex:none;
-  transition:transform .4s var(--ease);
+  height:clamp(52px,7vw,72px);width:auto;object-fit:contain;flex:none;
+  border-radius:10px;border:1px solid var(--sand);background:var(--paper);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
 }
 .logo-marquee__group img:hover{
   transform:translateY(-3px);
+  box-shadow:0 12px 28px -14px rgba(20,17,16,.35);
 }
 @keyframes logo-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){
