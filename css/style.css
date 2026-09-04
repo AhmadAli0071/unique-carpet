@@ -166,10 +166,10 @@ p{margin:0 0 1.15em}
 .site-header.is-stuck{box-shadow:0 10px 30px -20px rgba(20,17,16,.5)}
 .nav{
   display:flex;align-items:center;justify-content:space-between;
-  min-height:72px;gap:1.5rem;
+  min-height:84px;gap:1.5rem;
 }
 .brand{display:flex;align-items:center;gap:.85rem;flex-shrink:0}
-.brand__mark{width:42px;height:42px;flex:0 0 42px}
+.brand__mark{width:56px;height:56px;flex:0 0 56px}
 .brand__text{line-height:1.05}
 .brand__name{
   font-family:var(--font-display);font-size:1.42rem;color:var(--ink);
@@ -341,7 +341,7 @@ p{margin:0 0 1.15em}
 }
 
 @media(max-width:520px){
-  .brand__mark{width:34px;height:34px;flex-basis:34px}
+  .brand__mark{width:44px;height:44px;flex-basis:44px}
   .brand__name{font-size:1.02rem;letter-spacing:0}
   .brand__tag{font-size:.48rem;letter-spacing:.22em}
   .nav{min-height:62px;gap:.5rem}
