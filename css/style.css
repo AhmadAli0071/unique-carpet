@@ -195,47 +195,102 @@ p{margin:0 0 1.15em}
 .nav__item.is-open .caret{transform:rotate(180deg)}
 
 .dropdown{
-  position:absolute;top:100%;left:50%;transform:translate(-50%,10px);
-  min-width:250px;background:var(--paper);
-  border:1px solid var(--sand);box-shadow:var(--shadow-md);
-  padding:.6rem 0;opacity:0;visibility:hidden;transition:.3s var(--ease);
+  position:absolute;top:100%;left:50%;transform:translate(-50%,14px) scale(.985);
+  transform-origin:top center;
+  min-width:260px;background:var(--paper);
+  border:1px solid var(--sand);border-radius:14px;
+  box-shadow:0 24px 60px -24px rgba(20,17,16,.35),0 4px 16px -8px rgba(20,17,16,.12);
+  padding:.65rem 0;opacity:0;visibility:hidden;
+  transition:opacity .32s var(--ease),transform .32s var(--ease),visibility 0s linear .32s;
 }
-.nav__item.is-open .dropdown{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.dropdown::before{
+  content:"";position:absolute;top:0;left:12%;right:12%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.nav__item.is-open .dropdown{
+  opacity:1;visibility:visible;transform:translate(-50%,0) scale(1);
+  transition-delay:0s;
+}
 .dropdown a{
-  display:block;padding:.6rem 1.5rem;font-size:.82rem;color:var(--charcoal);
-  transition:.25s;border-left:2px solid transparent;
+  display:block;position:relative;padding:.62rem 1.6rem;font-size:.83rem;color:var(--charcoal);
+  transition:color .25s var(--ease),padding-left .25s var(--ease),background .25s var(--ease);
 }
-.dropdown a:hover{background:var(--bone);color:var(--gold-dk);border-left-color:var(--gold)}
+.dropdown a::before{
+  content:"\203A";position:absolute;left:.85rem;top:50%;transform:translate(-6px,-50%);
+  color:var(--gold);opacity:0;transition:.25s var(--ease);font-weight:600;
+}
+.dropdown a:hover{background:var(--bone);color:var(--gold-dk);padding-left:2.1rem}
+.dropdown a:hover::before{opacity:1;transform:translate(0,-50%)}
 .dropdown__head{
-  padding:.45rem 1.5rem;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  display:block;padding:.55rem 1.6rem .45rem;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
   color:var(--mist);
 }
 
 /* mega panel — the Products menu, three levels deep in one board */
-.dropdown--mega{width:min(1080px,94vw);padding:1.9rem 2.1rem 1.5rem}
-.mega__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1.2rem 1.6rem}
+.dropdown--mega{width:min(1120px,94vw);padding:1.9rem 1.9rem 1.4rem}
+.mega__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem 1rem}
+.mega__col{
+  background:linear-gradient(180deg,rgba(230,220,205,.30),rgba(230,220,205,.10));
+  border:1px solid transparent;border-radius:12px;
+  padding:1.05rem 1.05rem .95rem;
+  transition:background .3s var(--ease),border-color .3s var(--ease),
+             box-shadow .3s var(--ease),transform .3s var(--ease);
+}
+.mega__col:hover{
+  background:var(--paper);border-color:var(--sand);
+  box-shadow:0 16px 36px -20px rgba(20,17,16,.30);
+  transform:translateY(-3px);
+}
 .mega__head{
-  display:block;font-family:var(--font-display);font-size:1.08rem;color:var(--ink);
-  padding:0 0 .55rem;margin-bottom:.5rem;border-bottom:1px solid var(--sand);
-  border-left:0;transition:color .25s;
+  display:flex;align-items:center;gap:.55rem;
+  font-family:var(--font-display);font-size:1.06rem;color:var(--ink);
+  padding:0 0 .55rem;margin-bottom:.55rem;border-bottom:1px solid var(--sand);
+  transition:color .25s var(--ease);
 }
-.mega__head:hover{background:none;color:var(--gold-dk);border-left:0}
+.mega__head::before{
+  content:"";width:7px;height:7px;flex:0 0 7px;
+  border:1.5px solid var(--gold);background:transparent;transform:rotate(45deg);
+  transition:background .25s var(--ease);
+}
+.mega__col:hover .mega__head{color:var(--gold-dk);border-bottom-color:rgba(179,135,63,.4)}
+.mega__col:hover .mega__head::before{background:var(--gold)}
 .dropdown--mega a:not(.mega__head){
-  padding:.34rem 0;font-size:.84rem;color:var(--stone);border-left:0;
+  display:block;position:relative;
+  padding:.32rem 0 .32rem .6rem;font-size:.84rem;color:var(--stone);border-left:0;
 }
-.dropdown--mega a:not(.mega__head):hover{background:none;color:var(--gold-dk);padding-left:.3rem}
+.dropdown--mega a:not(.mega__head)::before{
+  content:"\203A";position:absolute;left:0;top:.3rem;
+  color:var(--gold);opacity:0;transform:translateX(-5px);
+  transition:.25s var(--ease);font-weight:600;
+}
+.dropdown--mega a:not(.mega__head):hover{
+  background:none;color:var(--ink);padding-left:.95rem;
+}
+.dropdown--mega a:not(.mega__head):hover::before{opacity:1;transform:translateX(0)}
 .mega__note{
-  margin:0 0 .5rem;font-size:.8rem;line-height:1.6;color:var(--stone);
+  margin:.2rem 0 .5rem;font-size:.8rem;line-height:1.6;color:var(--stone);
 }
 .mega__note--sub{
-  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);
+  font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);
 }
 .mega__all{
-  display:block;margin-top:1.3rem;padding:1rem 0 0;border-top:1px solid var(--sand);
-  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dk);
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:1.35rem;padding:1.1rem .4rem 0;border-top:1px solid var(--sand);
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk);
+  transition:color .25s var(--ease);
+}
+.mega__all::after{
+  content:"\203A";font-size:1rem;letter-spacing:0;
+  transition:transform .3s var(--ease);
 }
 .mega__all:hover{background:none;color:var(--ink)}
+.mega__all:hover::after{transform:translateX(6px)}
 @media(max-width:1200px){.mega__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:960px){
+  .mega__col{background:none;border:0;border-radius:0;padding:0;box-shadow:none;transform:none}
+  .mega__col:hover{background:none;border-color:transparent;box-shadow:none;transform:none}
+  .dropdown a:hover{padding-left:2.6rem}
+}
 
 .nav__cta{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
 .nav__toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center}
