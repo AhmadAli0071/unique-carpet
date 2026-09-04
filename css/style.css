@@ -170,6 +170,7 @@ p{margin:0 0 1.15em}
 }
 .brand{display:flex;align-items:center;gap:.85rem;flex-shrink:0}
 .brand__mark{width:56px;height:56px;flex:0 0 56px}
+.footer__mark{background:var(--paper);border-radius:50%;padding:5px;flex:0 0 66px;width:66px;height:66px}
 .brand__text{line-height:1.05}
 .brand__name{
   font-family:var(--font-display);font-size:1.42rem;color:var(--ink);
