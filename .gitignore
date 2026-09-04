@@ -1,0 +1,7 @@
+# Separate Next.js project with its own git repo
+web/
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
